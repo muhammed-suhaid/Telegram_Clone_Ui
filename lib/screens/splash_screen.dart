@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:telegram_clone_ui/components/bottom_nav_bar.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,12 +25,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Text(
-          'Telegram',
-          style: TextStyle(color: Colors.white),
+        child: SvgPicture.asset(
+          'assets/icons/logo.svg',
+          height: 180,
         ),
       ),
     );
