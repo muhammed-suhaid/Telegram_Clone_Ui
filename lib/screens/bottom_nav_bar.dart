@@ -9,7 +9,7 @@ class MyBottomNavBar extends StatefulWidget {
 }
 
 class _MyBottomNavBarState extends State<MyBottomNavBar> {
-  int currentIndex = 0;
+  int currentIndex = 2;
   List<Widget> body = [
     const Center(
       child: Text(
