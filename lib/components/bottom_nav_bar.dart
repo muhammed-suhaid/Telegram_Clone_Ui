@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MyBottomNavBar extends StatefulWidget {
   const MyBottomNavBar({super.key});
@@ -52,27 +53,32 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
             });
           },
           iconSize: 30,
+          selectedFontSize: 12,
+          unselectedFontSize: 12,
           unselectedItemColor: Colors.grey,
           selectedLabelStyle: const TextStyle(color: Colors.grey),
           selectedItemColor: Colors.white,
           unselectedLabelStyle: const TextStyle(color: Colors.white),
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.black,
-          items: const [
+          backgroundColor: const Color(0xFF1C1C1D),
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: SvgPicture.asset('assets/icons/contacts.svg'),
+              activeIcon:
+                  SvgPicture.asset('assets/icons/contacts_selected.svg'),
               label: 'Contacts',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.phone),
               label: 'Calls',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.message),
+              icon: SvgPicture.asset('assets/icons/chats.svg'),
+              activeIcon: SvgPicture.asset('assets/icons/chats_selected.svg'),
               label: 'Chats',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: 'Settings',
             ),
