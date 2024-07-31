@@ -69,7 +69,7 @@ class _ChatCardState extends State<ChatCard> {
               ),
               const Spacer(),
               Text(
-               time,
+                time,
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.45),
                 ),
