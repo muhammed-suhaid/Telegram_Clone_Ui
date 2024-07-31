@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:telegram_clone_ui/screens/chats_screen.dart';
 
 class MyBottomNavBar extends StatefulWidget {
   const MyBottomNavBar({super.key});
@@ -22,12 +23,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
         style: TextStyle(color: Colors.white),
       ),
     ),
-    const Center(
-      child: Text(
-        'Chats',
-        style: TextStyle(color: Colors.white),
-      ),
-    ),
+    const ChatsScreen(),
     const Center(
       child: Text(
         'Settings',
