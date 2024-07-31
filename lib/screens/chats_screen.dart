@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telegram_clone_ui/components/chat_card.dart';
 import 'package:telegram_clone_ui/components/my_appbar.dart';
 
 class ChatsScreen extends StatefulWidget {
@@ -16,6 +17,9 @@ class _ChatsScreenState extends State<ChatsScreen> {
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 90),
         child: MyAppbar(),
+      ),
+      body: SingleChildScrollView(
+        child: ChatCard(),
       ),
     );
   }
