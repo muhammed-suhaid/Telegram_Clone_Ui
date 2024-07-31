@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:telegram_clone_ui/datas/message_data.dart';
 import 'package:telegram_clone_ui/models/chat_model.dart';
+import 'package:telegram_clone_ui/models/message_model.dart';
 import 'package:telegram_clone_ui/services/chat_api.dart';
 
 class ChatCard extends StatefulWidget {
@@ -10,7 +12,7 @@ class ChatCard extends StatefulWidget {
 }
 
 class _ChatCardState extends State<ChatCard> {
-  List<User> chat = [];
+  List<User> users = [];
 
   @override
   void initState() {
@@ -23,8 +25,16 @@ class _ChatCardState extends State<ChatCard> {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 10,
+      itemCount: users.length,
       itemBuilder: (context, index) {
+        final user = users[index];
+
+        List<Message> data =
+            messagesList.map((msg) => Message.fromMap(msg)).toList();
+
+        final String lastMsg = data[index].lastMsg;
+        final String time = data[index].time;
+
         return Container(
           margin: const EdgeInsets.symmetric(
             horizontal: 8,
@@ -33,20 +43,24 @@ class _ChatCardState extends State<ChatCard> {
           height: 65,
           child: Row(
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 30,
-                child: Text('image'),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.network(user.image),
+                ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 20),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Chat Name',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  Text(
+                    user.name,
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   Text(
-                    'last message',
+                    lastMsg,
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.45),
                     ),
@@ -55,7 +69,7 @@ class _ChatCardState extends State<ChatCard> {
               ),
               const Spacer(),
               Text(
-                'Time',
+               time,
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.45),
                 ),
@@ -69,6 +83,8 @@ class _ChatCardState extends State<ChatCard> {
 
   Future<void> fetchUsers() async {
     final response = await ChatApi.fetchUsers();
-    print(response);
+    setState(() {
+      users = response;
+    });
   }
 }

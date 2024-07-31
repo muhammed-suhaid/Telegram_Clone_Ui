@@ -12,7 +12,7 @@ List<Map<String, String>> messagesList = [
   {'lastMsg': 'Welcome', 'time': 'Fri'},
   {'lastMsg': 'Sorry', 'time': 'Fri'},
   {'lastMsg': 'No problem', 'time': 'Thu'},
-  {'lastMsg': 'Sure', 'time': '11:05 AM'},
+  {'lastMsg': 'Sure', 'time': 'Thu'},
   {'lastMsg': 'Absolutely', 'time': 'Thu'},
   {'lastMsg': 'Of course', 'time': 'Thu'},
   {'lastMsg': 'Great', 'time': 'Wed'},
