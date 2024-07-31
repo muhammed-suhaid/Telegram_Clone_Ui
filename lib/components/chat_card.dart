@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:telegram_clone_ui/models/chat_model.dart';
+import 'package:telegram_clone_ui/services/chat_api.dart';
 
-class ChatCard extends StatelessWidget {
+class ChatCard extends StatefulWidget {
   const ChatCard({super.key});
+
+  @override
+  State<ChatCard> createState() => _ChatCardState();
+}
+
+class _ChatCardState extends State<ChatCard> {
+  List<User> chat = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUsers();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,5 +65,10 @@ class ChatCard extends StatelessWidget {
         );
       },
     );
+  }
+
+  Future<void> fetchUsers() async {
+    final response = await ChatApi.fetchUsers();
+    print(response);
   }
 }
